@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
+    <title>Decodificador de Texto</title>
+</head>
+<body>
+    <header>
+        <img class="logoalura" src="Img/logo alura.png" alt="Logo Alura">
+    </header>
+    <main>
+        <section>
+            <textarea class="textarea" cols="50" rows="100" placeholder="Digite seu Texto" autofocus></textarea>
+            <div class="info">
+                <img class="exclamacao" src="Img/exclamacao.png">
+                <h6>Apenas letras minúsculas e sem acento!</h6>
+            </div>
+            <div class="botoes">
+                <button class="btnEncriptar" onclick="btnEncriptar()"></button>
+                <button class="btnDesencriptar" onclick="btnDesencriptar()"></button>
+            </div>
+        </section>
+        <section>
+            <textarea class="mensagem" cols="20" rows="12" placeholder="..." readonly></textarea>
+            <button class="btnCopiar" onclick="btnCopiar()"></button>
+            <div class="imagem-alerta">
+                <img class="boneco" src="Img/boneco.png" alt="Nenhuma mensagem encontrada">
+                <img class="alerta" src="Img/alerta.png" alt="Nenhuma mensagem encontrada">
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&#169; 2023 – Desenvolvido por Alan Griebler</p>
+        <a href="https://github.com/Alanzzera" target="_blank"><img src="Img/github.png" alt="github">
+        <a href="https://www.linkedin.com/in/alangriebler/" target="_blank"><img src="Img/linkedin.png" alt="linkedin">
+    </footer>
+    <script src="Script.js"></script>
+</body>
+</html>
