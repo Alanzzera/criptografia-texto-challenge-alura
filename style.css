@@ -145,9 +145,12 @@ body {
 }
 
 footer {
-    margin-top: auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     background: #F3F5FC;
-    padding: 10px;
+    padding: 1px;
     text-align: center;
     font-size: 14px;
     color: #666;
