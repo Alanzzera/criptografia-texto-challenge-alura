@@ -75,3 +75,14 @@ function ocultarImagemAlerta() {
     imagemBoneco.style.display = 'none';
     imagemAlerta.style.display = 'none';
 }
+
+function validarTexto(element) {
+    const texto = element.value.toLowerCase();
+    const textoSemAcento = removerAcentos(texto);
+    const textoSemSimbolos = textoSemAcento.replace(/[^a-z\s]/g, '');
+    element.value = textoSemSimbolos;
+}
+  
+function removerAcentos(texto) {
+    return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
