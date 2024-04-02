@@ -42,7 +42,7 @@ O resultado deve ser exibido na tela.</p>
 ![print descriptando](/Img/imagem3.jpg)
 
 <h2>Demonstração completa.</h2> 
-Link: https://alanzzera.github.io/Decodificador-Texto/
+Link: https://alanzzera.github.io/criptografia-texto-challenge-alura/
 
 
 <h3>Técnologias e recursos utilizados.</h3>
