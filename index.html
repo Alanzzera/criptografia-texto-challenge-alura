@@ -1,44 +1,63 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
     <title>Decodificador de Texto</title>
 </head>
+
 <body>
-    <header>
-        <img class="logoalura" src="Img/logo alura.png" alt="Logo Alura">
-    </header>
-    <main>
-        <section>
-            <textarea class="textarea" cols="50" rows="100" placeholder="Digite seu Texto" autofocus oninput="validarTexto(this)"></textarea>
-            <div class="info">
-                <img class="exclamacao" src="Img/exclamacao.png">
-                <h6>Apenas letras minúsculas e sem acento!</h6>
-            </div>
-            <div class="botoes">
-                <button class="btnEncriptar" onclick="btnEncriptar()"></button>
-                <button class="btnDesencriptar" onclick="btnDesencriptar()"></button>
-            </div>
+    <div class="app-container">
+        <div class="wrap-input-header">
+            <header>
+                <img id="logo" class="logo unselectable" unselectable="on" src="Img/logo alura.png"
+                    alt="Logo da Alura">
+            </header>
+
+            <section class="input-message">
+                <label hidden for="msgTextarea">Digite seu texto aqui</label>
+                <textarea id="msgTextarea" name="msgTextarea" rows="3" cols="3" oninput="validarTexto(this)"    
+                    placeholder="Digite seu texto"></textarea>
+
+                <div class="btn-container">
+                    <div class="requirements">
+                        <img src="img/exclamacao.png" alt="">
+                        <span>Apenas letras minúsculas e sem acento.</span>
+                    </div>
+                    <div class="btn-encrypt-decrypt">
+                        <button onclick="btnEncrypt()" class="btn dark-blue unselectable">Criptografar</button>
+                        <button onclick="btnDecrypt()" class="btn light-gray unselectable">Descriptografar</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section id="result" class="result">
+            <textarea id="resultMessage" name="resultMessage" readonly></textarea>
+            <img id="boneco" src="Img/boneco.png" alt="Digite um texto" width="60%">
+            <img id="campoVazio" src="Img/alerta.png" alt="Digite um texto">
+            <img id="copiar" src="Img/copiar.png" alt="Copiar" onclick="btnCopiar()">
         </section>
-        <section>
-            <textarea class="mensagem" cols="20" rows="12" placeholder="..." readonly></textarea>
-            <button class="btnCopiar" onclick="btnCopiar()"></button>
-            <div class="imagem-alerta">
-                <img class="boneco" src="Img/boneco.png" alt="Nenhuma mensagem encontrada">
-                <img class="alerta" src="Img/alerta.png" alt="Nenhuma mensagem encontrada">
-            </div>
-        </section>
-    </main>
+    </div>
     <footer>
-        <p>&#169; 2023 – Desenvolvido por Alan Griebler</p>
-        <a href="https://github.com/Alanzzera" target="_blank"><img src="Img/github.png" alt="github">
-        <a href="https://www.linkedin.com/in/alangriebler/" target="_blank"><img src="Img/linkedin.png" alt="linkedin">
+        <ul>
+            <li>© Desenvolvido por Alan Griebler</li>
+            <li>|</li>
+            <li>
+                <a href="https://github.com/Alanzzera" target="_blank"><img src="Img/github.png" alt="Logo do GitHub"> GitHub</a>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/in/alangriebler/" target="_blank"><img src="Img/linkedin.png" alt="Logo do LinkedIn"> LinkedIn</a>
+            </li>
+        </ul>
     </footer>
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>

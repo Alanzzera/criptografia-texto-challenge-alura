@@ -1,5 +1,5 @@
-const textArea = document.querySelector(".textarea");
-const mensagem = document.querySelector(".mensagem");
+const textArea = document.querySelector("#msgTextarea");
+const resultMessage = document.querySelector("#resultMessage");
 
 //As "chaves" de criptografia que utilizaremos são:
 //A letra "e" é convertida para "enter"
@@ -8,36 +8,29 @@ const mensagem = document.querySelector(".mensagem");
 //A letra "o" é convertida para "ober"
 //A letra "u" é convertida para "ufat"
 
-function btnEncriptar(){
-    const textoEncriptado = encriptar(textArea.value);
-    if(textoEncriptado.length<1){
+function btnEncrypt() {
+    const textoEncriptar = encriptar(textArea.value);
+    if(textoEncriptar.length<1){
+        exibirImagemAlerta();
         alert("Digite o texto a ser criptografado");
     }else{
-        mensagem.value = textoEncriptado;
+        ocultarImagemAlerta()
+        resultMessage.value = textoEncriptar;
         textArea.value = "";
-        ocultarImagemAlerta();
+
     }
 }
 
-function btnDesencriptar() {
-    const textoEncriptado = desencriptar(textArea.value);
-    if(textoEncriptado.length<1){
+function btnDecrypt() {
+    const textoDescriptar = desencriptar(textArea.value);
+    if(textoDescriptar.length<1){
+        exibirImagemAlerta();
         alert("Digite o texto a ser descriptografado");
     }else{
-        mensagem.value = textoEncriptado;
+        ocultarImagemAlerta()
+        resultMessage.value = textoDescriptar;
         textArea.value = "";
-        ocultarImagemAlerta();
-    }
-}
 
-function btnCopiar() {
-    if (mensagem.value === "") {
-        alert("Não há mensagem a ser copiada");
-    } else {
-        mensagem.select();
-        document.execCommand("copy");
-        mensagem.value = "";
-        exibirImagemAlerta();
     }
 }
 
@@ -52,37 +45,47 @@ function encriptar(stringEncriptada) {
     return stringEncriptada;
 }
 
-function desencriptar(stringEncriptada) {
+function desencriptar(stringDescriptada) {
     let matrizCodigo = [["e", "enter"], ["i","imes"], ["a","ai"], ["o","ober"], ["u","ufat"]];
-    stringEncriptada = stringEncriptada.toLowerCase();
+    stringDescriptada = stringDescriptada.toLowerCase();
     for(let i = 0; i < matrizCodigo.length; i++) {
-        if(stringEncriptada.includes(matrizCodigo[i][1])) {
-            stringEncriptada = stringEncriptada.replaceAll(matrizCodigo[i][1], matrizCodigo[i][0]);
+        if(stringDescriptada.includes(matrizCodigo[i][1])) {
+            stringDescriptada = stringDescriptada.replaceAll(matrizCodigo[i][1], matrizCodigo[i][0]);
         }
     }
-    return stringEncriptada;
+    return stringDescriptada;
 }
 
-const imagemBoneco = document.querySelector('.boneco');
-const imagemAlerta = document.querySelector('.alerta');
+function btnCopiar() {
+    if (resultMessage.value === "") {
+        alert("Não há mensagem a ser copiada");
+    } else {
+        resultMessage.select();
+        document.execCommand("copy");
+        resultMessage.value = "";
+        exibirImagemAlerta();
+    }
+}
+
+function validarTexto(element) {
+    let texto = element.value.toLowerCase(); // Converte para minúsculas
+    texto = texto.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // Remove acentos
+    const textoSemSimbolos = texto.replace(/[^a-z\s]/g, ''); // Remove símbolos exceto letras e espaços
+    element.value = textoSemSimbolos;
+}
+
+
+const imagemBoneco = document.querySelector('#boneco');
+const imagemCampoVazio = document.querySelector('#campoVazio');
+
 
 function exibirImagemAlerta() {
     imagemBoneco.style.display = 'block';
-    imagemAlerta.style.display = 'block';
+    imagemCampoVazio.style.display = 'block';
+
 }
 
 function ocultarImagemAlerta() {
     imagemBoneco.style.display = 'none';
-    imagemAlerta.style.display = 'none';
-}
-
-function validarTexto(element) {
-    const texto = element.value.toLowerCase();
-    const textoSemAcento = removerAcentos(texto);
-    const textoSemSimbolos = textoSemAcento.replace(/[^a-z\s]/g, '');
-    element.value = textoSemSimbolos;
-}
-  
-function removerAcentos(texto) {
-    return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    imagemCampoVazio.style.display = 'none';
 }
